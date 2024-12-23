@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import s from './SidebarBasket.module.sass'
 
 export const SidebarBasket = () => {
     const basket = useSelector((state) => state.basket.basket);
 
     return (
-        <div className="sidebar-basket">
+        <div className={s.sidebarBasket}>
             <h3>Карзина</h3>
             <ul>
                 {basket.length === 0 ? (

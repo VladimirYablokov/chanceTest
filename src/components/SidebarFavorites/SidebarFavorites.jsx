@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import s from './SidebarFavorites.module.sass';
 
 export const SidebarFavorites = () => {
     const favorites = useSelector((state) => state.favorites.favorites);
 
     return (
-        <div className="sidebar-favorites">
+        <div className={s.sidebarFavorites}>
             <h3>Избранное</h3>
             <ul>
                 {favorites.length === 0 ? (

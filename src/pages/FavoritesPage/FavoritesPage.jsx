@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromFavorites } from "../redux/slices/FavoritesSlice.js";
+import { removeFromFavorites } from "../../redux/slices/FavoritesSlice.js";
+import s from './FavoritesPage.module.sass'
+import {Button} from "../../UI/Button/Button.jsx";
 
 export const FavoritesPage = () => {
     const dispatch = useDispatch();
@@ -9,9 +11,8 @@ export const FavoritesPage = () => {
     const handleRemove = (id) => {
         dispatch(removeFromFavorites(id));
     };
-    // console.log("cписок избранного", favorites);
     return (
-        <div className="favorites-page">
+        <div className={s.favoritesPage}>
             <h2>Избранное</h2>
             {favorites.length === 0 ? (
                 <p>У вас нет товаров в избранном.</p>
@@ -21,7 +22,7 @@ export const FavoritesPage = () => {
                         <li key={product.id}>
                             <div className='product-item'>
                                 <p>{product.name}</p>
-                                <button onClick={() => handleRemove(product.id)}>Удалить из избранного</button>
+                                <Button onClick={() => handleRemove(product.id)}>Удалить из избранного</Button>
                             </div>
                         </li>
                     ))}

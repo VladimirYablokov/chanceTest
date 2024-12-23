@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ProductCard from '../components/Card.jsx';
+import { ProductCard} from "../../components/ProductCard/ProductCard.jsx";
+import s from './ProductPage.module.sass'
 
 
 export const ProductPage = () => {
@@ -24,7 +25,7 @@ export const ProductPage = () => {
     if (loading) return <p>Загрузка товаров...</p>;
 
     return (
-        <div className="product-list">
+        <div className={s.productList}>
             {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}

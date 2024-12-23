@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorites } from '../redux/slices/FavoritesSlice.js';
-import { addToBasket } from '../redux/slices/BasketSlice.js';
+import { addToFavorites } from '../../redux/slices/FavoritesSlice.js';
+import { addToBasket } from '../../redux/slices/BasketSlice.js';
+import { Button } from "../../UI/Button/Button.jsx";
+import s from './ProductCard.module.sass'
 
-const ProductCard = ({ product }) => {
+export const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
 
     const favorites = useSelector((state) => state.favorites.favorites || []);
@@ -23,15 +25,17 @@ const ProductCard = ({ product }) => {
     const isOutOfStock = product.quantity === 0;
 
     return (
-        <div className="product-item">
+        <div className={s.productItem}>
             <h3>{product.name}</h3>
             <p>Цена: {product.price_discount || product.price} руб.</p>
             {product.price_discount && <p className="old-price">Старая цена: {product.price} руб.</p>}
+
             <img
                 src={product.image}
                 alt={product.name.split(' ')[1]}
             />
-            <button
+
+            <Button
                 onClick={handleAddToFavorites}
                 disabled={isInFavorites || isOutOfStock}
             >
@@ -40,8 +44,9 @@ const ProductCard = ({ product }) => {
                     : isInFavorites
                         ? 'В избранном'
                         : 'Добавить в избранное'}
-            </button>
-            <button
+            </Button>
+
+            <Button
                 onClick={handleAddToBasket}
                 disabled={isInBasket || isOutOfStock}
             >
@@ -50,9 +55,8 @@ const ProductCard = ({ product }) => {
                     : isInBasket
                         ? 'В корзине'
                         : 'Добавить в корзину'}
-            </button>
+            </Button>
         </div>
     );
 };
 
-export default ProductCard;

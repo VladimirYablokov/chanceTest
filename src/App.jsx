@@ -1,9 +1,9 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import {ProductPage} from "./pages/ProductPage.jsx";
-import {FavoritesPage} from "./pages/FavoritesPage.jsx";
-import {SidebarFavorites} from "./components/SidebarFavorites.jsx";
-import {BasketPage} from "./pages/BasketPage.jsx";
-import {SidebarBasket} from "./components/SidebarBasket.jsx";
+import {ProductPage} from "./pages/ProductPage/ProductPage.jsx";
+import {FavoritesPage} from "./pages/FavoritesPage/FavoritesPage.jsx";
+import {SidebarFavorites} from "./components/SidebarFavorites/SidebarFavorites.jsx";
+import {BasketPage} from "./pages/BasketPage/BasketPage.jsx";
+import {SidebarBasket} from "./components/SidebarBasket/SidebarBasket.jsx";
 import './App.css'
 
 function App() {

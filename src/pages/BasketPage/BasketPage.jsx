@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromBasket } from "../redux/slices/BasketSlice.js";
+import { removeFromBasket } from "../../redux/slices/BasketSlice.js";
+import s from './BasketPage.module.sass'
+import {Button} from "../../UI/Button/Button.jsx";
 
 export const BasketPage = () => {
     const dispatch = useDispatch();
@@ -10,7 +12,7 @@ export const BasketPage = () => {
         dispatch(removeFromBasket(id));
     };
     return (
-        <div className="basket-page">
+        <div className={s.basketPage}>
             <h2>Корзина</h2>
             {basket.length === 0 ? (
                 <p>У вас нет товаров в корзине.</p>
@@ -18,9 +20,9 @@ export const BasketPage = () => {
                 <ul>
                     {basket.map((product) => (
                         <li key={product.id}>
-                            <div className='product-item'>
+                            <div className={s.productItem}>
                                 <p>{product.name}</p>
-                                <button onClick={() => handleRemove(product.id)}>Удалить из карзины</button>
+                                <Button onClick={() => handleRemove(product.id)}>Удалить из карзины</Button>
                             </div>
                         </li>
                     ))}
